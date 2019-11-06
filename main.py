@@ -9,8 +9,6 @@ import torch.nn as nn
 data = Data()
 feature,label = data.get_standard_data()
 
-feature = feature.astype(np.float64)
-label = label.astype(np.float64)
 feature = torch.from_numpy(feature)
 label = torch.from_numpy(label)
 print (feature)

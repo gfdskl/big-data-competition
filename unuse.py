@@ -2,25 +2,10 @@
 import numpy as np
 import torch 
 import torch.utils.data as Data
+from sklearn.preprocessing import Imputer
 
-x = torch.arange(12)
-y = torch.arange(12)
-# print (x)
-# print (y)
-dataset_ = Data.TensorDataset(x,y)
-loader = Data.DataLoader(
-    dataset=dataset_,
-    batch_size=4,
-    shuffle=True,
-    # num_workers=2,
-)
-
-for epoch in range(3):
-    for step,(a,b) in enumerate(loader):
-        print ("step:"+str(step))
-        print (x)
-        print (y)
-
-
-
-
+x = [[1,2],[np.nan,3],[7,6]]
+imp = Imputer(missing_values='NaN',strategy='mean',axis=0)
+imp.fit(x)
+x = imp.transform(x)
+print (x)
